@@ -4,6 +4,8 @@
 #94F29A
 #F28729 */
 
+/* These are the colors from the color pallette used. */
+
 body {
     background-color: #194159;
     background-color: #68A683;
@@ -20,11 +22,12 @@ button {
     padding: 10px;
     cursor: pointer;
     border-radius: 20px;
+    border: 5px solid #194159;
 }
-/* 
+
 button:hover {
     background-color: #94F29A;
-} */
+}
 
 button:active {
     background-color: #BBF2D8;
@@ -42,7 +45,7 @@ button:active {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 3px solid #194159;
+    border: 5px solid #194159;
     background-color: #F28729;
     border-radius: 10px;
     padding: 20px 50px;
