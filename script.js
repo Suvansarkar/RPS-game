@@ -4,31 +4,44 @@ function getComputerChoice(){
     return choices[randint];
 }
 
-function playRound(playerSelection, computerSelection){
+function playRound(playerSelection, computerSelection, output){
     playerSelection = playerSelection.toLowerCase();
     if(playerSelection===computerSelection.toLowerCase()){
-        return "It's a Draw!";
+        output.textContent = "It's a Draw!";
+        return 0;
     }else if(playerSelection==="rock" && computerSelection==="scissors"){
-        return "You win! " + playerSelection + " beats " + computerSelection + ".";
+        output.textContent = "You win! " + playerSelection + " beats " + computerSelection + ".";
+        return 1;
     }else if(playerSelection==="scissors" && computerSelection==="paper"){
-        return "You win! " + playerSelection + " beats " + computerSelection + ".";
+        output.textContent ="You win! " + playerSelection + " beats " + computerSelection + ".";
+        return 1;
     }else if(playerSelection==="paper" && computerSelection==="rock"){
-        return "You win! " + playerSelection + " beats " + computerSelection + ".";
+        output.textContent = "You win! " + playerSelection + " beats " + computerSelection + ".";
+        return 1;
     }else {
-        return "You lose! " + computerSelection + " beats " + playerSelection + ".";
+        output.textContent = "You lose! " + computerSelection + " beats " + playerSelection + ".";
+        return 2;
     }
 }
 
 let button = document.querySelectorAll("button");
 let display = document.getElementById("user-choice");
 let result = document.getElementById("result");
-console.log(button);
+let scoreboard = document.getElementById("scoreboard");
+let player_score = 0;
+let computer_score = 0;
+// console.log(button);
 button.forEach(item => {
     item.addEventListener("click", ()=>{
         display.textContent = "You chose: " + item.id;
-        let resulttext = playRound(item.id, getComputerChoice());
-        result.textContent = resulttext;
-        console.log(userchoice);
+        let round_status = playRound(item.id, getComputerChoice(), result);
+        if(round_status===1){
+            player_score++;
+        }else if(round_status===2){
+            computer_score++;
+        }
+        scoreboard.textContent = "You: " + player_score + "\t Computer: " + computer_score;
+        // console.log(userchoice);
     });
 });
 
