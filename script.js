@@ -1,5 +1,5 @@
 function getComputerChoice(){
-    const choices = ["Rock", "Paper", "Scissors"];
+    const choices = ["rock", "paper", "scissors"];
     const randint = Math.floor(Math.random()*3);
     return choices[randint];
 }
@@ -8,22 +8,29 @@ function playRound(playerSelection, computerSelection){
     playerSelection = playerSelection.toLowerCase();
     if(playerSelection===computerSelection.toLowerCase()){
         return "It's a Draw!";
-    }else if(playerSelection==="rock" && computerSelection==="Scissors"){
+    }else if(playerSelection==="rock" && computerSelection==="scissors"){
         return "You win! " + playerSelection + " beats " + computerSelection + ".";
-    }else if(playerSelection==="scissors" && computerSelection==="Paper"){
+    }else if(playerSelection==="scissors" && computerSelection==="paper"){
         return "You win! " + playerSelection + " beats " + computerSelection + ".";
-    }else if(playerSelection==="paper" && computerSelection==="Rock"){
+    }else if(playerSelection==="paper" && computerSelection==="rock"){
         return "You win! " + playerSelection + " beats " + computerSelection + ".";
     }else {
         return "You lose! " + computerSelection + " beats " + playerSelection + ".";
     }
 }
 
-let flag = true;
-while(flag){
-    const playerSelection = prompt("Enter your choice: ");
-    if(playerSelection==null){
-        flag=false;
-    }
-    console.log(playRound(playerSelection, getComputerChoice()));
-}
+let button = document.querySelectorAll("button");
+let display = document.getElementById("user-choice");
+let result = document.getElementById("result");
+console.log(button);
+button.forEach(item => {
+    item.addEventListener("click", ()=>{
+        display.textContent = "You chose: " + item.id;
+        let resulttext = playRound(item.id, getComputerChoice());
+        result.textContent = resulttext;
+        console.log(userchoice);
+    });
+});
+
+// let test = document.getElementById("rock");
+// console.log(test);
