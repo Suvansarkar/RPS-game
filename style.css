@@ -5,6 +5,11 @@
 #F28729 */
 
 /* These are the colors from the color pallette used. */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+
+* {
+    font-family: roboto;
+}
 
 body {
     background-color: #194159;
@@ -12,7 +17,58 @@ body {
     background-color: #94F29A;
     background-color: #F28729;
     background-color: #BBF2D8;
+    height: 100%;
+}
 
+#overlay {
+    position: fixed;
+    display: none;
+    align-items: start;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    /* cursor: pointer;  */
+}
+
+.game-over {
+    background-color: #194159;
+    margin-top: 20px;
+    border: 5px solid #F28729;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #F28729;
+}
+
+.game-over-text {
+    padding: 20px 50px;
+}
+
+.retry {
+    background-color: #94F29A;
+    
+    display: flex;
+    text-align: center;
+    margin: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px solid #F28729;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+html {
+    height: 100%;
 }
 
 button {
@@ -36,8 +92,9 @@ button:active {
 .player-container{
     display: flex;
     justify-content: center;
-    
-    margin: auto;
+    align-items: center;
+    height: 100%;
+    /* margin: auto; */
 }
 
 .player-border{
@@ -53,6 +110,7 @@ button:active {
 }
 
 .user-options {
+    /* opacity: 0; */
     display: flex;
     gap: 20px;
 }

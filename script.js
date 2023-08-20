@@ -1,3 +1,11 @@
+let button = document.querySelectorAll("button");
+let display = document.getElementById("user-choice");
+let result = document.getElementById("result");
+let scoreboard = document.getElementById("scoreboard");
+let player_score = 0;
+let computer_score = 0;
+let overlay = document.getElementById("overlay");
+
 function getComputerChoice(){
     const choices = ["rock", "paper", "scissors"];
     const randint = Math.floor(Math.random()*3);
@@ -24,12 +32,22 @@ function playRound(playerSelection, computerSelection, output){
     }
 }
 
-let button = document.querySelectorAll("button");
-let display = document.getElementById("user-choice");
-let result = document.getElementById("result");
-let scoreboard = document.getElementById("scoreboard");
-let player_score = 0;
-let computer_score = 0;
+function gameOver(){
+    overlay.style.display = "flex";
+    document.getElementsByClassName("game-over-button").addEventListener("click", ()=>{
+        restart();
+        console.log("called");
+    });
+}
+
+function restart(){
+    player_score=0;
+    computer_score=0;
+    overlay.style.display = "none";
+}
+
+
+
 // console.log(button);
 button.forEach(item => {
     item.addEventListener("click", ()=>{
@@ -40,10 +58,17 @@ button.forEach(item => {
         }else if(round_status===2){
             computer_score++;
         }
-        scoreboard.textContent = "You: " + player_score + "\t Computer: " + computer_score;
+        scoreboard.textContent = "You: " + player_score + "\t\t Computer: " + computer_score;
+        if(player_score==5 || computer_score==5){
+            gameOver();
+        }
         // console.log(userchoice);
     });
 });
 
+
+
+
 // let test = document.getElementById("rock");
 // console.log(test);
+
